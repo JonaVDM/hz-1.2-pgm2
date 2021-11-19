@@ -17,7 +17,7 @@
 
 06 addn r2 -1     # Start the counter
 07 jeqzn r2 10    # Jump to the end when no multiplying has to be done
-08 mul r3 r3 r1   # Multpiply r3 by r1
+08 mul r3 r3 r1   # Multiply r3 by r1
 09 jumpn 06       # Go back to the start of the loop
 
 10 write r3       # Print out the output

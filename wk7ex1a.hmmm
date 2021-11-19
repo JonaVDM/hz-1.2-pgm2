@@ -15,4 +15,4 @@
 03 write r2       # Print out r2
 04 addn r2 -1     # Remove 1 from r2
 05 jnezn r2 03    # Jump to instruction 03 as long as r2 is not 0
-06 halt           # Stop the progarm when r2 is 0
+06 halt           # Stop the program when r2 is 0

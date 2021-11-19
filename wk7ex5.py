@@ -44,8 +44,8 @@ def until_a_repeat(high: int) -> int:
     """ Well, I would say the name is clear enough... Generate random
         numbers until you find one that was already there. Weird shit,
         I know.
-        The amount of steps given to make this exercice is a bit much,
-        maybe turn it down tjust a tiny bit...
+        The amount of steps given to make this exercise is a bit much,
+        maybe turn it down just a tiny bit...
 
         Returns the amount of times it took before it found a repeat.
     """
