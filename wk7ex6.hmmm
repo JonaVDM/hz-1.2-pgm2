@@ -1,0 +1,41 @@
+# Week 7 Opdracht 6
+
+# r1 -> Input
+# r2 -> Output
+# r3 -> Register
+# r4 -> Return pos
+# r8 -> Temp variable for counter
+# r9 -> Temp variable for result
+
+00 read  r1           # Get input from user
+01 setn  r3 100       # Init the stack
+02 calln r4 5         # Execute FIB function
+03 write r2           # Print out the result
+04 halt               # Stop the program
+
+
+#
+# FIB Function
+#
+
+# Basecase
+05 copy  r8 r1        # Copy counter to r8
+06 addn  r8 -2        # Remove two from the copy
+07 jgtzn r8 10        # If r8 is above 0, jump to the recursion part
+08 setn  r2 1         # Set value of the output to 1
+09 jumpr r4           # Jump back to the caller
+
+# Recursive case
+10 pushr  r4 r3       # Push the return address on the stack
+11 pushr  r1 r3       # Push the counter on the stack
+12 addn   r1 -1       # Remove one from the counter
+13 calln  r4 5        # Get FIB(r1-1)
+14 copy   r9 r2       # Copy the output to r9
+15 popr   r1 r3       # Pop the value of the counter of the stack back to r1
+16 pushr  r9 r3       # Push the result of FIB(r1-1) to the stack
+17 addn   r1 -2       # Remove two from the counter
+18 calln  r4 5        # Get FIB(r1-2)
+19 popr   r9 r3       # Pop the result of FIB(r1-1) back to r9
+20 add    r2 r2 r9    # Add the two values together
+21 popr   r4 r3       # Pop the return address of the stack
+22 jumpr  r4          # Jump back to the caller

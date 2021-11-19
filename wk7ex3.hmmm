@@ -1,0 +1,23 @@
+# Week 7 Opgave 3
+#
+# Naam:
+#
+# Hmmm...
+#
+# Dit is een voorbeeld; je moet deze code vervangen...
+#
+
+00 read r1        # Get user input for how many times
+01 setn r2 0      # Set r2 to 0
+02 setn r3 1      # Set r3 to 1
+
+# Swap r2 and r3
+03 add r2 r2 r3   # Set r2 = r2 + r3
+04 sub r3 r2 r3   # Set r3 = r2 - r3
+05 sub r2 r2 r3   # Set r2 = r2 - r3
+
+06 add r2 r2 r3   # Add r2 to r3 making a step in Fibonacci
+07 addn r1 -1     # Remove 1 from the counter
+08 write r2       # Print out the current number
+09 jgtzn r1 03    # Jump back as long counter > 0
+10 halt           # Stop the program

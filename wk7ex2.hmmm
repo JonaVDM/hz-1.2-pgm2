@@ -1,0 +1,24 @@
+# Week 7 Opgave 2
+#
+# Naam:
+#
+# Hmmm...
+#
+# Dit is een voorbeeld; je moet deze code vervangen...
+#
+
+00 read r1        # Get the base number
+01 read r2        # Get the power
+02 copy r3 r1     # Get a copy of r1 into r3
+
+03 jgtzn r2 06    # if power is greater than 0, jump to line 6
+04 setn r3 1      # Set base to 1 when
+05 jumpn 10       # Go to the end
+
+06 addn r2 -1     # Start the counter
+07 jeqzn r2 10    # Jump to the end when no multiplying has to be done
+08 mul r3 r3 r1   # Multpiply r3 by r1
+09 jumpn 06       # Go back to the start of the loop
+
+10 write r3       # Print out the output
+11 halt           # End the program
