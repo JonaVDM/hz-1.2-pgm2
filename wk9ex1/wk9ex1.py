@@ -77,6 +77,8 @@ def random_cells(width, height):
 
 
 def copy(board):
+    """ Craetes a deep copy of the given board.
+    """
     newBoard = create_board(len(board[0]), len(board))
 
     for i in range(1, len(board) - 1):
@@ -87,6 +89,9 @@ def copy(board):
 
 
 def inner_reverse(board):
+    """ Reverse the inside cells of the board.
+        1 becomes 0 and 0 becomes 1
+    """
     newBoard = copy(board)
 
     for i in range(1, len(board) - 1):
@@ -100,6 +105,8 @@ def inner_reverse(board):
 
 
 def count_neighbours(row, col, board):
+    """ Counts the direct neighbours of the given cell
+    """
     counter = 0
     for y in range(row - 1, row + 2):
         for x in range(col - 1, col + 2):
@@ -126,15 +133,3 @@ def next_life_generation(board):
                 newBoard[y][x] = 1
 
     return newBoard
-
-
-a = [[0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [
-    0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0]]
-print_board(a)
-print()
-a2 = next_life_generation(a)
-print_board(a2)
-print()
-
-a3 = next_life_generation(a2)
-print_board(a3)
