@@ -42,14 +42,13 @@ def menu() -> None:
     """)
 
 
-def do_action(action: int, prices: list[float]) -> list[float]:
+def do_action(action: int, prices: list) -> list:
     """ Checks which action it should do and performs it
     """
     if action == 0:
         return new_list(prices)
     elif action == 1:
         print_stocks(prices)
-        return prices
     elif action == 2:
         print_average(prices)
     elif action == 3:
@@ -69,7 +68,7 @@ def do_action(action: int, prices: list[float]) -> list[float]:
 # -- Menu item functions --
 #
 
-def new_list(current: list[float]) -> list[float]:
+def new_list(current: list) -> list:
     """ asks the user for a new list and parses this
     """
     inp = input("Voer een nieuwe lijst in: ")
@@ -83,7 +82,7 @@ def new_list(current: list[float]) -> list[float]:
     return current
 
 
-def print_stocks(prices: list[float]) -> None:
+def print_stocks(prices: list) -> None:
     """ Makes a fancy list of all the prices
     """
     print(f"{'Dag'}  {'Prijs'}")
@@ -92,33 +91,33 @@ def print_stocks(prices: list[float]) -> None:
         print(f"{day: >3} {price: .2f}")
 
 
-def print_average(prices: list[float]) -> None:
+def print_average(prices: list) -> None:
     """ Print out the average price
     """
     print(f"De gemiddelde prijs is {get_average(prices): .2f}")
 
 
-def print_standard_deviation(prices: list[float]) -> None:
+def print_standard_deviation(prices: list) -> None:
     """ Print out the standard deviation
     """
     print(f"De standaardafwijking is {get_standard_deviation(prices)}")
 
 
-def print_minimum(prices: list[float]) -> None:
+def print_minimum(prices: list) -> None:
     """ Prints the minimum value together with the day
     """
     price, day = get_minimum(prices)
     print(f"Het minimum is {price} op dag {day}")
 
 
-def print_maximum(prices: list[float]) -> None:
+def print_maximum(prices: list) -> None:
     """ Prints the minimum value together with the day
     """
     price, day = get_maximum(prices)
     print(f"Het maximum is {price} op dag {day}")
 
 
-def print_tri(prices: list[float]) -> None:
+def print_tri(prices: list) -> None:
     buy, sell = get_tri(prices)
     print(f"Koop op dag {buy} voor {prices[buy]}")
     print(f"Verkoop op dag {sell} voor {prices[sell]}")
@@ -130,13 +129,13 @@ def print_tri(prices: list[float]) -> None:
 #
 
 
-def get_average(prices: list[float]) -> float:
+def get_average(prices: list) -> float:
     """ Returns the average value of a list of floats
     """
     return get_sum(prices) / len(prices)
 
 
-def get_sum(prices: list[float]) -> float:
+def get_sum(prices: list) -> float:
     """ Returns the sum of the list
     """
     total = 0.0
@@ -145,7 +144,7 @@ def get_sum(prices: list[float]) -> float:
     return total
 
 
-def get_standard_deviation(prices: list[float]) -> float:
+def get_standard_deviation(prices: list) -> float:
     """ Returns the standard deviation of the list
     """
     total = 0.0
@@ -157,7 +156,7 @@ def get_standard_deviation(prices: list[float]) -> float:
     return math.sqrt(total / len(prices))
 
 
-def get_minimum(prices: list[float]) -> tuple[float, int]:
+def get_minimum(prices: list) -> tuple:
     """ Returns the smallest price together with the day
     """
     small = prices[0]
@@ -170,7 +169,7 @@ def get_minimum(prices: list[float]) -> tuple[float, int]:
     return (small, day)
 
 
-def get_maximum(prices: list[float]) -> tuple[float, int]:
+def get_maximum(prices: list) -> tuple:
     """ Returns the highest price together with the day
     """
     big = prices[0]
@@ -183,7 +182,7 @@ def get_maximum(prices: list[float]) -> tuple[float, int]:
     return (big, day)
 
 
-def get_tri(prices: list[float]) -> tuple[int, int]:
+def get_tri(prices: list) -> tuple:
     """ Returns the most profit that could have been made
         if we happened to own a timemachine
     """
@@ -199,6 +198,3 @@ def get_tri(prices: list[float]) -> tuple[int, int]:
                 profit = prices[i] - price
 
     return buy_date, sell_date
-
-
-main()

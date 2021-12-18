@@ -135,3 +135,73 @@ assert in_a_row_3_northeast('X', 2, 0, a)
 assert in_a_row_3_northeast('O', 3, 0, a)
 assert not in_a_row_3_northeast('O', 3, 1, a)
 assert not in_a_row_3_northeast('X', 3, 3, a)
+
+
+def in_a_row_n_east(ch, r_start, c_start, a, n):
+    """ Check if three on a row towards east are the same
+    """
+    for i in range(c_start, c_start+n):
+        if i >= len(a[c_start]):
+            return False
+        if a[r_start][i] != ch:
+            return False
+    return True
+
+
+def in_a_row_n_south(ch, r_start, c_start, a, n):
+    """ Check if three on a row towards south are the same
+    """
+    for i in range(r_start, r_start+n):
+        if i >= len(a):
+            return False
+        if a[i][c_start] != ch:
+            return False
+    return True
+
+
+def in_a_row_n_southeast(ch, r_start, c_start, a, n):
+    """ Check if three on a row towards south east are the same
+    """
+    for i in range(n):
+        if r_start+i >= len(a[0]) or c_start+i >= len(a):
+            return False
+        if a[r_start+i][c_start+i] != ch:
+            return False
+    return True
+
+
+def in_a_row_n_northeast(ch, r_start, c_start, a, n):
+    """ Check if three on a row towards north east are the same
+    """
+    for i in range(n):
+        if r_start-i < 0 or c_start+i >= len(a):
+            return False
+        if a[r_start-i][c_start+i] != ch:
+            return False
+    return True
+
+
+# tests voor in_a_row_n_east
+a = create_a(5, 5, 'XXOXXXOOOOOOXXXX XXXOOOOO')
+assert in_a_row_n_east('O', 1, 1, a, 4)
+assert in_a_row_n_east('O', 1, 3, a, 2)
+assert not in_a_row_n_east('X', 3, 2, a, 4)
+assert in_a_row_n_east('O', 4, 0, a, 5)
+# tests voor in_a_row_n_south
+a = create_a(5, 5, 'XXOXXXOOOOOOXXXXOXXXOOOXO')
+assert not in_a_row_n_south('X', 0, 0, a, 5)
+assert in_a_row_n_south('O', 1, 1, a, 4)
+assert not in_a_row_n_south('O', 0, 1, a, 6)
+assert in_a_row_n_south('X', 4, 3, a, 1)
+# tests voor in_a_row_n_southeast
+a = create_a(5, 5, 'XOO XXXOXOOOXXXXOXXXOOOXX')
+assert in_a_row_n_southeast('X', 1, 1, a, 4)
+assert not in_a_row_n_southeast('O', 0, 1, a, 3)
+assert in_a_row_n_southeast('O', 0, 1, a, 2)
+assert not in_a_row_n_southeast('X', 3, 0, a, 2)
+# tests voor in_a_row_n_northeast
+a = create_a(5, 5, 'XOO XXXOXOOOXOXXXOXXXOOXX')
+assert in_a_row_n_northeast('X', 4, 0, a, 5)
+assert in_a_row_n_northeast('O', 4, 1, a, 4)
+assert not in_a_row_n_northeast('O', 2, 0, a, 2)
+assert not in_a_row_n_northeast('X', 0, 3, a, 1)
