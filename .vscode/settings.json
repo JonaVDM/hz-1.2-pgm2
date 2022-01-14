@@ -8,4 +8,5 @@
     "typescript",
     "python"
   ]
+  // "python.pythonPath": "/Users/jona/.pyenv/versions/3.10.0/bin/python"
 }

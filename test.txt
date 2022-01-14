@@ -1,0 +1,23 @@
+De methode host_game voegt alles samen tot het complete spel Vier op een rij. Ze moet de gebruiker Vier op een rij laten spelen, en hiervoor de bovenstaande methodes gebruiken. In het bijzonder moeten 'X' en 'O' afwisselend aan de beurt zijn. De methode moet de gebruiker vragen een kolomnummer te selecteren voor elke zet. Hieronder kan je een voorbeeld zien van hoe deze interactie moet werken, maar hier zijn een paar belangrijke punten om in de gaten te houden:
+Deze methode moet elke keer het bord afdrukken voordat de zet gevraagd wordt.
+Het is handig om een grote while-lus te gebruiken om het spel te structureren. 'X' is eerst aan de beurt en daarna 'O'. We stellen voor dat je beurt van zowel 'X' als 'O' in de body van de lus zet. Op die manier speelt één iteratie twee zetten in Vier op een rij.
+Je kan ook een oneindige lus gebruiken en dan ergens in de body van de lus break gebruiken als het spel eindigt.
+Controleer na elke input of de gekozen kolom geldig is. Deze methode moet dus ongeldige zetten, zowel als de kolom niet bestaat of als deze vol is, herkennen, en de gebruiker om een andere kolom vragen. Je hoeft echter niet te controleren of de invoer van de gebruiker een integer is; je mag ervan uitgaan dat dit altijd zo is.
+Je kan als richtlijn voor het voorkomen van ongeldige zetten onderstaande kleine lus gebruiken:
+Bovenstaande code vraagt de gebruiker simpelweg net zo lang om een geldig kolomnummer tot hij er één ontvangt.
+De methode host_game moet elke steen in de door de gebruiker gekozen kolom zetten. Gebruik hiervoor add_move! Daarna moet ze controleren of die speler gewonnen heeft; als dat zo is, moet er een bericht worden afgedrukt en moet de lus afgebroken worden met break. Ook moet je controleren of het bord nu vol is; als dat zo is, moet er een bericht worden afgedrukt en moet de lus afgebroken worden met break.
+Als het spel dus afgelopen is voor één van deze redenen, moet het spel stoppen, het bord moet nog een laatste keer worden afgedrukt en het programma moet vertellen wie er gewonnen heeft. Merk op dat je break kan gebruiken om uit een lus te komen; zelfs als die break in een if-else-statement staat.
+Als het spel niet over is, moet de andere speler gevraagd worden een zet te doen, en zo verder...
+Vergeet niet de methode te testen door het spel een paar keer te spelen!
+
+Vier op een rij is een variant van Boter, kaas en eieren dat gespeeld wordt op een rechthoekig bord van 7 bij 6:
+Het spel wordt gespeeld door twee spelers, die om de beurt een zet doen, waarbij beide spelers proberen om vier stenen op een verticale, horizontale of diagonale rij te krijgen. Eén voorwaarde bij het spelen is dat, omdat het bord verticaal opgesteld staat, de stenen niet zomaar overal geplaatst kunnen worden. Een stee mag alleen maar bovenaan een bestaande kolom stenen gespeeld worden.
+
+n deze opgave ga je een klasse genaamd Board maken die sommige eigenschappen van het spel Vier op een rij implementeert. De klasse Board heeft drie instantievariabelen: er is een tweedimensionale lijst met karakters die het spelbord voorstelt, en twee variabelen die het aantal rijen en kolommen op het bord bijhouden.
+
+Zelfs als we onbeperkt grote borden toestaan blijft de regel echter bestaan dat je vier stenen op een rij nodig hebt om te winnen. Toegegeven, dit maakt het wel lastig om het spel te winnen op een bord van 3 bij 3...
+Een variabele met de naam data waarin de tweedimensionale array met het spelbord wordt opgeslagen.
+Een variabele height waarin het aantal rijen op het bord wordt opgeslagen.
+Een variabele width waarin het aantal kolommen op het bord wordt opgeslagen.
+Merk op dat de tweedimensionale lijst een tweedimensionale lijst van karakters is; dit zijn gewoon strings van lengte 1. Je moet een leeg veld laten voorstellen door ' ', een spatieteken; niet de lege string. Je moet de stenen van speler X laten voorstellen door een 'X' en je moet de stenen van speler O laten voorstellen door een 'O'.
+Je moet een aantal methodes implementeren in de klasse Board. Vergeet niet de tips over hoe je ze kan testen te gebruiken nadat je ze geschreven hebt! De eerste twee methodes zijn in het college behandeld en zijn hieronder gegeven zodat je ze kan kopiëren en plakken.
