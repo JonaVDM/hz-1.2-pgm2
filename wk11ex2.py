@@ -1,3 +1,6 @@
+import random
+
+
 class Board:
     """A data type representing a Connect-4 board
        with an arbitrary number of rows and columns.
@@ -78,10 +81,11 @@ class Board:
     def is_full(self):
         """ Checks if the board is currently full
         """
+        full_cols = 0
         for i in range(0, self.width):
             if not self.allows_move(i):
-                return True
-        return False
+                full_cols += 1
+        return full_cols == self.width
 
     def del_move(self, col: int) -> None:
         """ Deletes the top most tile dropped down in column col
@@ -108,11 +112,49 @@ class Board:
                     return True
         return False
 
+    def cols_to_win(self, player):
+        """ Checks if player can win in the next move
+            returns all the positions where player can win
+        """
+        wins = []
+        for col in range(self.width):
+            if not self.allows_move(col):
+                continue
+            self.add_move(col, player)
+            if self.wins_for(player):
+                wins.append(col)
+            self.del_move(col)
+        return wins
+
+    def ai_move(self, player):
+        """ Decide where the ai should be putting down its
+            stone. Returns the number of the decided column
+        """
+        opponent = "X"
+        if player == "X":
+            opponent = "O"
+
+        opponentWins = self.cols_to_win(opponent)
+        selfWins = self.cols_to_win(player)
+
+        if len(selfWins) > 0:
+            return selfWins[0]
+
+        if len(opponentWins) > 0:
+            return opponentWins[0]
+
+        col = -1
+        while not self.allows_move(col):
+            col = random.randint(0, self.width)
+
+        return col
+
     def host_game(self) -> None:
         """ Runs the game.
             Why is this in the class, that doesn't make much sense...
         """
         player = 'X'
+        computer = 'O'
         while True:
             print(self)
 
@@ -123,18 +165,26 @@ class Board:
             self.add_move(col, player)
 
             if self.wins_for(player):
+                print(f'{player} heeft gewonnen -- Gefeliciteerd!')
                 break
 
             if self.is_full():
                 print('Niemand wint, het bord is vol')
-                return
+                break
 
-            if player == 'X':
-                player = 'O'
-            else:
-                player = 'X'
+            comp_move = self.ai_move(computer)
+            self.add_move(comp_move, computer)
+            print(
+                f'De computer ({computer}) heeft gekozen voor col {comp_move}')
 
-        print(f'{player} wint -- Gefeliciteerd!')
+            if self.wins_for(computer):
+                print(f'{computer} wint -- loser, word verslagen door een matige AI')
+                break
+
+            if self.is_full():
+                print('Niemand wint, het bord is vol')
+                break
+
         print(self)
 
 
