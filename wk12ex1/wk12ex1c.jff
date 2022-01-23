@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--Created with JFLAP 6.4.--><structure>
+	<type>fa</type>
+	<automaton>
+		<!--The list of states.-->
+		<state id="0" name="q0">
+			<x>65.0</x>
+			<y>187.0</y>
+			<initial/>
+		</state>
+		<state id="1" name="q1">
+			<x>214.0</x>
+			<y>126.0</y>
+			<final/>
+		</state>
+		<state id="2" name="q2">
+			<x>413.0</x>
+			<y>123.0</y>
+		</state>
+		<state id="3" name="q3">
+			<x>206.0</x>
+			<y>290.0</y>
+			<final/>
+		</state>
+		<state id="4" name="q4">
+			<x>420.0</x>
+			<y>288.0</y>
+		</state>
+		<!--The list of transitions.-->
+		<transition>
+			<from>3</from>
+			<to>3</to>
+			<read>0</read>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>2</to>
+			<read>0</read>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>1</to>
+			<read>1</read>
+		</transition>
+		<transition>
+			<from>4</from>
+			<to>4</to>
+			<read>1</read>
+		</transition>
+		<transition>
+			<from>3</from>
+			<to>4</to>
+			<read>1</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>1</to>
+			<read>1</read>
+		</transition>
+		<transition>
+			<from>4</from>
+			<to>3</to>
+			<read>0</read>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>1</to>
+			<read>1</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>3</to>
+			<read>0</read>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>2</to>
+			<read>0</read>
+		</transition>
+		<note>
+			<text>wk12ex1c.jff:  maak een FSM die strings accepteert waarvan de eerste en laatste bit hetzelfde zijn</text>
+			<x>8.0</x>
+			<y>11.0</y>
+		</note>
+	</automaton>
+</structure>
